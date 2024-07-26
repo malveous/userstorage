@@ -7,6 +7,24 @@ You will require:
 - Maven 3+
 - Postman (optional for testing, you can also use http request file for IntellijIDEA Ultimate or any of your preferred Web clients)
 
+If you have more than one version of Java in your computer and you struggle changing ENV variables manually, you can try my PowerShell script to ease the pain :)
+
+https://github.com/malveous/scripting-tools/blob/main/jdk-switcher.ps1
+
+You must change the java paths according to your java installation paths, you can also add more java versions if required.
+
+Tip: You may need to make sure Execution Policy is enabled
+
+```bash
+Get-ExecutionPolicy -List
+```
+
+If not, then enable it for your user or Local Machine, you can disable it later, but for development purposes I believe is fine to leave it enabled
+
+```bash
+Set-ExecutionPolicy Unrestricted -Scope LocalMachine
+```
+
 ## Installation
 
 You clone the project into a local directory using the regular git clone command
