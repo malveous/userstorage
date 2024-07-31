@@ -1,12 +1,11 @@
 package com.globallogic.userstorage.persistence.entity;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.UuidGenerator;
 
+import javax.persistence.*;
 import java.time.Instant;
 import java.util.List;
 
@@ -23,11 +22,10 @@ public class User {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "user_id")
-    @UuidGenerator
+    @Column(name = "user_id", length = 36)
     private String userId;
 
-    @Column(name = "name", length = 100)
+    @Column(name = "name", length = 100, nullable = true)
     private String name;
 
     @Column(name = "email", unique = true, length = 70)
@@ -45,8 +43,7 @@ public class User {
     @Column(name = "last_login_date")
     private Instant lastLoginDate;
 
-    @Column(name = "token", length = 36)
-    @UuidGenerator
+    @Column(name = "token")
     private String token;
 
     @Column(name = "active")

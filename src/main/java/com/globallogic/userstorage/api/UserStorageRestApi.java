@@ -1,16 +1,16 @@
 package com.globallogic.userstorage.api;
 
+import com.globallogic.userstorage.model.request.TokenAuthenticationInput;
 import com.globallogic.userstorage.model.request.UserInput;
+import com.globallogic.userstorage.model.response.UserAuthenticationResponse;
 import com.globallogic.userstorage.model.response.UserRegistrationResponse;
 import com.globallogic.userstorage.service.UserStorageService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/user")
@@ -20,9 +20,15 @@ public class UserStorageRestApi {
 
     private final UserStorageService userStorageService;
 
-    @PostMapping("/userRegistration")
-    public ResponseEntity<UserRegistrationResponse> registerUser(@Valid @RequestBody UserInput userInput) {
-        return ResponseEntity.ok(this.userStorageService.registerUser(userInput));
+    @PostMapping("/sign-up")
+    public ResponseEntity<UserRegistrationResponse> signUp(@Valid @RequestBody UserInput userInput) {
+        return ResponseEntity.ok(this.userStorageService.signUp(userInput));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<UserAuthenticationResponse> login(
+            @RequestBody(required = true) TokenAuthenticationInput tokenAuthenticationInput) {
+        return ResponseEntity.ok(this.userStorageService.login(tokenAuthenticationInput.getToken()));
     }
 
 }

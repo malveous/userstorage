@@ -1,4 +1,4 @@
-package com.globallogic.userstorage.config;
+package com.globallogic.userstorage.security.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

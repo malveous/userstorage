@@ -1,9 +1,9 @@
 package com.globallogic.userstorage.persistence.entity;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "phone")
@@ -16,8 +16,8 @@ public class Phone {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "number", length = 15)
-    private String number;
+    @Column(name = "number")
+    private long number;
 
     @Column(name = "city_code", length = 5)
     private String cityCode;
@@ -29,7 +29,7 @@ public class Phone {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Phone(String number, String cityCode, String countryCode, User user) {
+    public Phone(long number, String cityCode, String countryCode, User user) {
         this.number = number;
         this.cityCode = cityCode;
         this.countryCode = countryCode;

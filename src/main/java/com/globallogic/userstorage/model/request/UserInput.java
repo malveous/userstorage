@@ -1,11 +1,15 @@
 package com.globallogic.userstorage.model.request;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import com.globallogic.userstorage.model.PhoneDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @NoArgsConstructor
@@ -13,9 +17,9 @@ import java.util.List;
 @Data
 public class UserInput {
 
-    @NotBlank(message = "The user name cannot be empty")
     private String name;
 
+    @NotBlank(message = "The email cannot be empty")
     @Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}", message = "The email must have a valid format")
     private String email;
 
@@ -24,7 +28,6 @@ public class UserInput {
     @Pattern(regexp = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$", message = "The password must contain at least one upper case, one lower case, one digit and one special character")
     private String password;
 
-    @NotEmpty(message = "At least one phone number should be registered")
-    private List<@Valid @NotNull(message = "Phone number data cannot be empty") PhoneInput> phones;
+    private List<@Valid PhoneDto> phones;
 
 }
