@@ -62,7 +62,7 @@ The default URL would be: http://localhost:8081/api/v1/user/sing-up
 ```json
 {
   "name": "Marcelo Tataje",
-  "email": "carlos.tataje@globallogic.com",
+  "email": "mail@mail.com",
   "password": "C0mpl3j0!",
   "phones": [
     {
